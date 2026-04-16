@@ -16,6 +16,7 @@ const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
   apiKey: process.env.OPENROUTER_API_KEY,
 });
+const OPENROUTER_MODEL = "arcee-ai/trinity-large-preview:free";
 
 // Enhanced CORS configuration to handle different network conditions
 const corsOptions = {
@@ -311,7 +312,7 @@ app.post('/api/chat', authenticateToken, async (req, res) => {
     ];
 
     const completion = await openai.chat.completions.create({
-      model: "stepfun/step-3.5-flash:free", 
+      model: OPENROUTER_MODEL,
       messages: messages,
     });
 
@@ -526,7 +527,7 @@ app.post('/api/generate-questions', authenticateToken, async (req, res) => {
 
     console.log('🤖 Calling OpenRouter API...');
     const completion = await openai.chat.completions.create({
-      model: "stepfun/step-3.5-flash:free",
+      model: OPENROUTER_MODEL,
       timeout: 60000, // 60 second timeout
       messages: [
         {
