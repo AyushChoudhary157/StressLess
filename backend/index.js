@@ -16,7 +16,7 @@ const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
   apiKey: process.env.OPENROUTER_API_KEY,
 });
-const OPENROUTER_MODEL = "arcee-ai/trinity-large-preview:free";
+const OPENROUTER_MODEL = "openai/gpt-4o-mini";
 
 // Enhanced CORS configuration to handle different network conditions
 const corsOptions = {
@@ -460,7 +460,7 @@ Generate now:`;
     let completion;
     try {
       completion = await openai.chat.completions.create({
-        model: "arcee-ai/trinity-large-preview:free", 
+        model: "openai/gpt-4o-mini", 
         messages: [
           { 
             role: "system", 
